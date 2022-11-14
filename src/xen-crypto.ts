@@ -1,4 +1,4 @@
-// import { crypto, ByteArray, ethereum, Bytes, BigInt } from "@graphprotocol/graph-ts"
+import { log } from "@graphprotocol/graph-ts"
 import {
   XENCrypto,
   // Approval,
@@ -11,8 +11,6 @@ import {
 import { RankClaimedEntity } from "../generated/schema"
 
 export function handleRankClaimed(event: RankClaimed): void {
-  // let contract = XENCrypto.bind(event.address)
-
   let id = event.transaction.hash.toHex()
   let entity = RankClaimedEntity.load(id)
 
@@ -20,6 +18,7 @@ export function handleRankClaimed(event: RankClaimed): void {
     entity = new RankClaimedEntity(id)
     // entity.logIndex = event.logIndex
     // entity.transactionLogIndex = event.transactionLogIndex
+    entity.blockNumber = event.block.number
     entity.transactionHash = event.transaction.hash
     // entity.transaction_fee = 
 
@@ -36,7 +35,12 @@ export function handleRankClaimed(event: RankClaimed): void {
     entity.mintAddress = arr
   }
 
+  // log.info("event address", [event.address.toHex()])
+  // log.warning("test log", ["feawfwafwafe"])
+
+  // let contract = XENCrypto.bind(event.address)
   // let mintinfo = contract.userMints(event.params.user)
+  // log.info("mint info ", [mintinfo.value0.toHex(), mintinfo.value1.toHex()])
   // if(mintinfo) {
   //   entity.isClaimed = true
   // } else {

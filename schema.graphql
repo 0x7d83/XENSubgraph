@@ -28,7 +28,8 @@ type ReceiptEntity @entity {
 # receipt: TransactionReceipt | null,  
 type RankClaimedEntity @entity {
   id: ID!
-
+  
+  blockNumber: BigInt
   transactionHash: Bytes
   transactionFee: BigInt
 

@@ -161,6 +161,23 @@ export class RankClaimedEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get blockNumber(): BigInt | null {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt | null) {
+    if (!value) {
+      this.unset("blockNumber");
+    } else {
+      this.set("blockNumber", Value.fromBigInt(<BigInt>value));
+    }
+  }
+
   get transactionHash(): Bytes | null {
     let value = this.get("transactionHash");
     if (!value || value.kind == ValueKind.NULL) {
