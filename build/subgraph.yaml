@@ -1,0 +1,24 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: XENCrypto
+    network: mainnet
+    source:
+      address: "0x06450dee7fd2fb8e39061434babcfc05599a6fb8"
+      abi: XENCrypto
+      startBlock: 15966859
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - RankClaimed
+      abis:
+        - name: XENCrypto
+          file: XENCrypto/abis/XENCrypto.json
+      eventHandlers:
+        - event: RankClaimed(indexed address,uint256,uint256)
+          handler: handleRankClaimed
+      file: XENCrypto/XENCrypto.wasm
