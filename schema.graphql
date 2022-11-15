@@ -12,3 +12,16 @@ type RankClaimedEntity @entity (immutable: true) {
   mintTerm: BigInt
   mintStartRank: BigInt
 }
+
+type MintClaimedEntity @entity(immutable: true) {
+  id: ID!
+  blockNumber: BigInt
+  transactionHash: Bytes
+  transactionFee: BigInt
+
+  userAddress: Bytes # from
+  platformAddress: Bytes # to
+
+  claimedAddress: [String!]!
+  claimedAmount: BigInt
+}

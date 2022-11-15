@@ -9,15 +9,15 @@ dataSources:
       address: "0x06450dee7fd2fb8e39061434babcfc05599a6fb8"
       abi: XENCrypto
       # startBlock: 15704871 # contract deploy blockNumber
-      startBlock: 15966859
+      startBlock: 15973693
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - RankClaimed
+        - MintClaimed
         # - Approval
-        # - MintClaimed
         # - Staked
         # - Transfer
         # - Withdrawn
@@ -27,10 +27,10 @@ dataSources:
       eventHandlers:
         - event: RankClaimed(indexed address,uint256,uint256)
           handler: handleRankClaimed
+        - event: MintClaimed(indexed address,uint256)
+          handler: handleMintClaimed
         # - event: Approval(indexed address,indexed address,uint256)
         #   handler: handleApproval
-        # - event: MintClaimed(indexed address,uint256)
-        #   handler: handleMintClaimed
         # - event: Staked(indexed address,uint256,uint256)
         #   handler: handleStaked
         # - event: Transfer(indexed address,indexed address,uint256)
