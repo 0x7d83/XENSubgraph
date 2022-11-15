@@ -1,32 +1,4 @@
-# event.receipt.blockHash
-# event.receipt.blockNumber
-# event.receipt.contractAddress
-# event.receipt.cumulativeGasUsed
-# event.receipt.gasUsed
-# event.receipt.logs
-# event.receipt.root
-# event.receipt.logsBloom
-# event.receipt.transactionHash
-# event.receipt.transactionIndex
-# event.receipt.status
-type ReceiptEntity @entity {
-  id: ID!
-  blockHash: Bytes
-  blockNumber: BigInt
-  contractAddress: Bytes
-  cumulativeGasUsed: BigInt
-  gasUsed: BigInt
-}
-
-# address: Address,
-# logIndex: BigInt,
-# transactionLogIndex: BigInt,
-# logType: string | null,
-# block: Block,
-# transaction: Transaction,
-# parameters: Array<EventParam>,
-# receipt: TransactionReceipt | null,  
-type RankClaimedEntity @entity {
+type RankClaimedEntity @entity (immutable: true) {
   id: ID!
   
   blockNumber: BigInt
@@ -39,5 +11,4 @@ type RankClaimedEntity @entity {
   mintAddress: [String!]!
   mintTerm: BigInt
   mintStartRank: BigInt
-  # isClaimed: Boolean
 }

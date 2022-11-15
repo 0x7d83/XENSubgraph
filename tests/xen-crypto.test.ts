@@ -1,16 +1,5 @@
-import {
-  assert,
-  describe,
-  test,
-  clearStore,
-  beforeAll,
-  afterAll
-} from "matchstick-as/assembly/index"
+import { assert, describe, test, clearStore, beforeAll, afterAll } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
-import { ExampleEntity } from "../generated/schema"
-import { Approval } from "../generated/XENCrypto/XENCrypto"
-import { handleApproval } from "../src/xen-crypto"
-import { createApprovalEvent } from "./xen-crypto-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
@@ -22,8 +11,8 @@ describe("Describe entity assertions", () => {
       "0x0000000000000000000000000000000000000001"
     )
     let value = BigInt.fromI32(234)
-    let newApprovalEvent = createApprovalEvent(owner, spender, value)
-    handleApproval(newApprovalEvent)
+    // let newApprovalEvent = createApprovalEvent(owner, spender, value)
+    // handleApproval(newApprovalEvent)
   })
 
   afterAll(() => {
