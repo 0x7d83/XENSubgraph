@@ -17,9 +17,9 @@ dataSources:
       entities:
         - RankClaimed
         - MintClaimed
+        # - Transfer
         # - Approval
         # - Staked
-        # - Transfer
         # - Withdrawn
       abis:
         - name: XENCrypto
@@ -29,12 +29,12 @@ dataSources:
           handler: handleRankClaimed
         - event: MintClaimed(indexed address,uint256)
           handler: handleMintClaimed
+        # - event: Transfer(indexed address,indexed address,uint256)
+          # handler: handleTransfer
         # - event: Approval(indexed address,indexed address,uint256)
         #   handler: handleApproval
         # - event: Staked(indexed address,uint256,uint256)
         #   handler: handleStaked
-        # - event: Transfer(indexed address,indexed address,uint256)
-        #   handler: handleTransfer
         # - event: Withdrawn(indexed address,uint256,uint256)
         #   handler: handleWithdrawn
       file: ./src/xen-crypto.ts

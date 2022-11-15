@@ -1,7 +1,7 @@
 type RankClaimedEntity @entity(immutable: true) {
   id: ID!
   blockNumber: BigInt
-  blocktime: BigInt
+  timestamp: BigInt
   transactionFee: BigInt
 
   userAddress: Bytes # from
@@ -15,7 +15,7 @@ type RankClaimedEntity @entity(immutable: true) {
 type MintClaimedEntity @entity(immutable: true) {
   id: ID!
   blockNumber: BigInt
-  blocktime: BigInt
+  timestamp: BigInt
   transactionFee: BigInt
 
   userAddress: Bytes # from

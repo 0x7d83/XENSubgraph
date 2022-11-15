@@ -9,9 +9,10 @@ export function handleRankClaimed(event: RankClaimed): void {
   if (!entity) {
     entity = new RankClaimedEntity(id)
     entity.blockNumber = event.block.number
+    entity.timestamp = event.block.timestamp 
 
-    let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
-    entity.transactionFee = receipt.gasUsed
+    // let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
+    // entity.transactionFee = receipt.gasUsed
 
     entity.userAddress = event.transaction.from
     entity.platformAddress = event.transaction.to
@@ -39,9 +40,10 @@ export function handleMintClaimed(event: MintClaimed): void {
   if (!entity) {
     entity = new MintClaimedEntity(id)
     entity.blockNumber = event.block.number
+    entity.timestamp = event.block.timestamp 
 
-    let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
-    entity.transactionFee = receipt.gasUsed
+    // let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
+    // entity.transactionFee = receipt.gasUsed
 
     entity.userAddress = event.transaction.from
     entity.platformAddress = event.transaction.to
@@ -63,7 +65,7 @@ export function handleMintClaimed(event: MintClaimed): void {
   entity.save()
 }
 
+// export function handleTransfer(event: Transfer): void { }
 // export function handleApproval(event: Approval): void { }
 // export function handleStaked(event: Staked): void { }
-// export function handleTransfer(event: Transfer): void { }
 // export function handleWithdrawn(event: Withdrawn): void { }

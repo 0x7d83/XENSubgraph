@@ -61,8 +61,8 @@ export class RankClaimedEntity extends Entity {
     }
   }
 
-  get blocktime(): BigInt | null {
-    let value = this.get("blocktime");
+  get timestamp(): BigInt | null {
+    let value = this.get("timestamp");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -70,11 +70,11 @@ export class RankClaimedEntity extends Entity {
     }
   }
 
-  set blocktime(value: BigInt | null) {
+  set timestamp(value: BigInt | null) {
     if (!value) {
-      this.unset("blocktime");
+      this.unset("timestamp");
     } else {
-      this.set("blocktime", Value.fromBigInt(<BigInt>value));
+      this.set("timestamp", Value.fromBigInt(<BigInt>value));
     }
   }
 
@@ -223,8 +223,8 @@ export class MintClaimedEntity extends Entity {
     }
   }
 
-  get blocktime(): BigInt | null {
-    let value = this.get("blocktime");
+  get timestamp(): BigInt | null {
+    let value = this.get("timestamp");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -232,11 +232,11 @@ export class MintClaimedEntity extends Entity {
     }
   }
 
-  set blocktime(value: BigInt | null) {
+  set timestamp(value: BigInt | null) {
     if (!value) {
-      this.unset("blocktime");
+      this.unset("timestamp");
     } else {
-      this.set("blocktime", Value.fromBigInt(<BigInt>value));
+      this.set("timestamp", Value.fromBigInt(<BigInt>value));
     }
   }
 
