@@ -26,7 +26,7 @@ type ReceiptEntity @entity {
 # transaction: Transaction,
 # parameters: Array<EventParam>,
 # receipt: TransactionReceipt | null,  
-type RankClaimedEntity @entity {
+type RankClaimedEntity @entity(immutable: true) {
   id: ID!
   
   blockNumber: BigInt
@@ -40,4 +40,17 @@ type RankClaimedEntity @entity {
   mintTerm: BigInt
   mintStartRank: BigInt
   # isClaimed: Boolean
+}
+
+type MintClaimedEntity @entity(immutable: true) {
+  id: ID!
+  blockNumber: BigInt
+  transactionHash: Bytes
+  transactionFee: BigInt
+
+  userAddress: Bytes # from
+  platformAddress: Bytes # to
+
+  claimedAddress: [String!]!
+  claimedAmount: BigInt
 }

@@ -16,8 +16,8 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - RankClaimed
+        - MintClaimed
         # - Approval
-        # - MintClaimed
         # - Staked
         # - Transfer
         # - Withdrawn
@@ -27,10 +27,10 @@ dataSources:
       eventHandlers:
         - event: RankClaimed(indexed address,uint256,uint256)
           handler: handleRankClaimed
+        - event: MintClaimed(indexed address,uint256)
+          handler: handleMintClaimed
         # - event: Approval(indexed address,indexed address,uint256)
         #   handler: handleApproval
-        # - event: MintClaimed(indexed address,uint256)
-        #   handler: handleMintClaimed
         # - event: Staked(indexed address,uint256,uint256)
         #   handler: handleStaked
         # - event: Transfer(indexed address,indexed address,uint256)

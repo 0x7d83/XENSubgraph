@@ -15,10 +15,13 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - RankClaimed
+        - MintClaimed
       abis:
         - name: XENCrypto
           file: XENCrypto/abis/XENCrypto.json
       eventHandlers:
         - event: RankClaimed(indexed address,uint256,uint256)
           handler: handleRankClaimed
+        - event: MintClaimed(indexed address,uint256)
+          handler: handleMintClaimed
       file: XENCrypto/XENCrypto.wasm
