@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-type RankClaimedEntity @entity (immutable: true) {
-=======
 type RankClaimedEntity @entity(immutable: true) {
->>>>>>> dev
   id: ID!
   blockNumber: BigInt
   timestamp: BigInt

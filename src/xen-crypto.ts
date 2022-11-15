@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { MintClaimed, RankClaimed } from "../generated/XENCrypto/XENCrypto"
-=======
 import { MintClaimed, RankClaimed, XENCrypto, Approval, Staked, Transfer, Withdrawn } from "../generated/XENCrypto/XENCrypto"
->>>>>>> dev
 import { RankClaimedEntity, MintClaimedEntity } from "../generated/schema"
 import { BigInt, ethereum, log } from "@graphprotocol/graph-ts"
 
@@ -30,13 +26,10 @@ export function handleRankClaimed(event: RankClaimed): void {
     arr.push(event.params.user.toHex())
     entity.mintAddress = arr
   }
-<<<<<<< HEAD
-=======
 
   // let contract = XENCrypto.bind(event.address)
   // let mintinfo = contract.userMints(event.params.user)
   // log.info("mint info ", [mintinfo.value0.toHex(), mintinfo.value1.toHex()])
->>>>>>> dev
   entity.save()
 }
 
