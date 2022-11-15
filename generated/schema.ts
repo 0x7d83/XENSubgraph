@@ -61,20 +61,20 @@ export class RankClaimedEntity extends Entity {
     }
   }
 
-  get transactionHash(): Bytes | null {
-    let value = this.get("transactionHash");
+  get timestamp(): BigInt | null {
+    let value = this.get("timestamp");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
-      return value.toBytes();
+      return value.toBigInt();
     }
   }
 
-  set transactionHash(value: Bytes | null) {
+  set timestamp(value: BigInt | null) {
     if (!value) {
-      this.unset("transactionHash");
+      this.unset("timestamp");
     } else {
-      this.set("transactionHash", Value.fromBytes(<Bytes>value));
+      this.set("timestamp", Value.fromBigInt(<BigInt>value));
     }
   }
 
@@ -223,20 +223,20 @@ export class MintClaimedEntity extends Entity {
     }
   }
 
-  get transactionHash(): Bytes | null {
-    let value = this.get("transactionHash");
+  get timestamp(): BigInt | null {
+    let value = this.get("timestamp");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
-      return value.toBytes();
+      return value.toBigInt();
     }
   }
 
-  set transactionHash(value: Bytes | null) {
+  set timestamp(value: BigInt | null) {
     if (!value) {
-      this.unset("transactionHash");
+      this.unset("timestamp");
     } else {
-      this.set("transactionHash", Value.fromBytes(<Bytes>value));
+      this.set("timestamp", Value.fromBigInt(<BigInt>value));
     }
   }
 

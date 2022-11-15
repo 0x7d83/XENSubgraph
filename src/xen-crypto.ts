@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import { MintClaimed, RankClaimed } from "../generated/XENCrypto/XENCrypto"
+=======
+import { MintClaimed, RankClaimed, XENCrypto, Approval, Staked, Transfer, Withdrawn } from "../generated/XENCrypto/XENCrypto"
+>>>>>>> dev
 import { RankClaimedEntity, MintClaimedEntity } from "../generated/schema"
-import { ethereum } from "@graphprotocol/graph-ts"
+import { BigInt, ethereum, log } from "@graphprotocol/graph-ts"
 
 export function handleRankClaimed(event: RankClaimed): void {
   let id = event.transaction.hash.toHex()
@@ -9,10 +13,10 @@ export function handleRankClaimed(event: RankClaimed): void {
   if (!entity) {
     entity = new RankClaimedEntity(id)
     entity.blockNumber = event.block.number
-    entity.transactionHash = event.transaction.hash
+    entity.timestamp = event.block.timestamp 
 
-    let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
-    entity.transactionFee = receipt.gasUsed
+    // let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
+    // entity.transactionFee = receipt.gasUsed
 
     entity.userAddress = event.transaction.from
     entity.platformAddress = event.transaction.to
@@ -26,6 +30,13 @@ export function handleRankClaimed(event: RankClaimed): void {
     arr.push(event.params.user.toHex())
     entity.mintAddress = arr
   }
+<<<<<<< HEAD
+=======
+
+  // let contract = XENCrypto.bind(event.address)
+  // let mintinfo = contract.userMints(event.params.user)
+  // log.info("mint info ", [mintinfo.value0.toHex(), mintinfo.value1.toHex()])
+>>>>>>> dev
   entity.save()
 }
 
@@ -36,10 +47,10 @@ export function handleMintClaimed(event: MintClaimed): void {
   if (!entity) {
     entity = new MintClaimedEntity(id)
     entity.blockNumber = event.block.number
-    entity.transactionHash = event.transaction.hash
+    entity.timestamp = event.block.timestamp 
 
-    let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
-    entity.transactionFee = receipt.gasUsed
+    // let receipt = event.params._event.receipt as  ethereum.TransactionReceipt
+    // entity.transactionFee = receipt.gasUsed
 
     entity.userAddress = event.transaction.from
     entity.platformAddress = event.transaction.to
@@ -50,12 +61,18 @@ export function handleMintClaimed(event: MintClaimed): void {
     let arr = entity.claimedAddress
     arr.push(event.params.user.toHex())
     entity.claimedAddress = arr
+
+    let amount = entity.claimedAmount
+    if (!amount) {
+      amount = BigInt.fromU32(0)
+    }
+    entity.claimedAmount = amount.plus(event.params.rewardAmount)
   }
 
   entity.save()
 }
 
+// export function handleTransfer(event: Transfer): void { }
 // export function handleApproval(event: Approval): void { }
 // export function handleStaked(event: Staked): void { }
-// export function handleTransfer(event: Transfer): void { }
 // export function handleWithdrawn(event: Withdrawn): void { }

@@ -9,7 +9,7 @@ dataSources:
       address: "0x06450dee7fd2fb8e39061434babcfc05599a6fb8"
       abi: XENCrypto
       startBlock: 15704871 # contract deploy blockNumber
-      # startBlock: 15973693
+      # startBlock: 15966859
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -17,9 +17,9 @@ dataSources:
       entities:
         - RankClaimed
         - MintClaimed
+        # - Transfer
         # - Approval
         # - Staked
-        # - Transfer
         # - Withdrawn
       abis:
         - name: XENCrypto
@@ -29,12 +29,12 @@ dataSources:
           handler: handleRankClaimed
         - event: MintClaimed(indexed address,uint256)
           handler: handleMintClaimed
+        # - event: Transfer(indexed address,indexed address,uint256)
+          # handler: handleTransfer
         # - event: Approval(indexed address,indexed address,uint256)
         #   handler: handleApproval
         # - event: Staked(indexed address,uint256,uint256)
         #   handler: handleStaked
-        # - event: Transfer(indexed address,indexed address,uint256)
-        #   handler: handleTransfer
         # - event: Withdrawn(indexed address,uint256,uint256)
         #   handler: handleWithdrawn
       file: ./src/xen-crypto.ts

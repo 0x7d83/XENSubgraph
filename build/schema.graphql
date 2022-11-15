@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 type RankClaimedEntity @entity (immutable: true) {
+=======
+type RankClaimedEntity @entity(immutable: true) {
+>>>>>>> dev
   id: ID!
-  
   blockNumber: BigInt
-  transactionHash: Bytes
+  timestamp: BigInt
   transactionFee: BigInt
 
   userAddress: Bytes # from
@@ -16,7 +19,7 @@ type RankClaimedEntity @entity (immutable: true) {
 type MintClaimedEntity @entity(immutable: true) {
   id: ID!
   blockNumber: BigInt
-  transactionHash: Bytes
+  timestamp: BigInt
   transactionFee: BigInt
 
   userAddress: Bytes # from
